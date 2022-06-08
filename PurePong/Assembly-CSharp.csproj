@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Manager.cs" />
+    <Compile Include="Assets\Scripts\Prect.cs" />
     <Compile Include="Assets\Scripts\Testing.cs" />
   </ItemGroup>
   <ItemGroup>
