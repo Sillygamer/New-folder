@@ -12,6 +12,12 @@ public class Manager : MonoBehaviour
     private Color wallColor = new Color(1, 0, .5f, 1);
     private Color centerLineColor = new Color(0, 1, 1, 0.5f);
 
+    //paddleai stuff
+    public static Vector2 ballLocation;
+
+    //set initial balll speed
+    public static float InitBallSpeed = 2.5f;
+
     //gui.box
     private static Texture2D _staticRectTexture;
     private static GUIStyle _staticRectStyle;
