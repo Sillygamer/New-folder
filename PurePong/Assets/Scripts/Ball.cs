@@ -51,6 +51,26 @@ public class Ball : MonoBehaviour
         }
     }
 
+    private void CheckOutOfBounds(Prect b)
+    {
+        if(b.rect.x < 0)
+        {
+            BallReset();
+        }
+        if(b.rect.x > Screen.width)
+        {
+            BallReset();
+        }
+    }
+
+    private void BallReset()
+    {
+        ballVelocity = new Vector2(Random.Range(1, 3), Random.Range(1, 3));
+        ball.rect.x = Screen.width / 2;
+        ball.rect.y = Screen.height / 2;
+        speed = Manager.InitBallSpeed;
+    }
+
     private void OnGUI()
     {
         Manager.GUIDrawRect(ball.rect, ballColor);
