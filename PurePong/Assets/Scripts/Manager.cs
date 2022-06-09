@@ -22,18 +22,33 @@ public class Manager : MonoBehaviour
     private static Texture2D _staticRectTexture;
     private static GUIStyle _staticRectStyle;
 
+    //colision
+    public static List<Prect> colliderprects = new List<Prect>();
+
     // Start is called before the first frame update
     void Start()
     {
+
         upperWall = new Prect("Upper Wall", 0, 0, Screen.width, 10, true, "WALL");
         lowerWall = new Prect("Lower Wall", 0, Screen.height - 10, Screen.width, 10, true, "WALL");
         centerLine = new Prect("Center Wall", Screen.width / 2, 0, 5, Screen.height, false, "CTRLine");
+
+        //colisionadd
+        colliderprects.Add(upperWall);
+        colliderprects.Add(lowerWall);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("SPACE");
+            foreach(Prect p in colliderprects)
+            {
+                Debug.Log(p.name);
+            }
+        }
     }
 
     public static void GUIDrawRect(Rect position, Color color)

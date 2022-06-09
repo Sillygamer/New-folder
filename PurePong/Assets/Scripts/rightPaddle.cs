@@ -12,6 +12,7 @@ public class rightPaddle : MonoBehaviour
     void Start()
     {
         paddleR = new Prect("Right Paddle",700, 100, 10, 30, true, "PADDLE");
+        Manager.colliderprects.Add(paddleR);
     }
 
     // Update is called once per frame
