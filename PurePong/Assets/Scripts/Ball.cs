@@ -25,8 +25,30 @@ public class Ball : MonoBehaviour
     {
         ball.rect.x += speed * ballVelocity.normalized.x;
         ball.rect.y += speed * ballVelocity.normalized.y;
-
+        CheckCollisions(ball);
         Manager.ballLocation = new Vector2(ball.rect.x, ball.rect.y);
+    }
+
+    private void CheckCollisions(Prect b)
+    {
+        foreach(Prect target in Manager.colliderprects)
+        {
+            if (b.rect.Overlaps(target.rect))
+            {
+                Debug.Log("Cilided with" + target.name);
+                if(target.tag == "WALL")
+                {
+                    ballVelocity.y = -ballVelocity.y;
+                }
+                if(target.tag == "PADDLE")
+                {
+                    ballVelocity.x = -ballVelocity.x;
+                }
+
+                //increasesped
+                speed *= 1.05f;
+            }
+        }
     }
 
     private void OnGUI()

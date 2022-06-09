@@ -16,7 +16,7 @@ public class Manager : MonoBehaviour
     public static Vector2 ballLocation;
 
     //set initial balll speed
-    public static float InitBallSpeed = 2.5f;
+    public static float InitBallSpeed = 0.5f;
 
     //gui.box
     private static Texture2D _staticRectTexture;
