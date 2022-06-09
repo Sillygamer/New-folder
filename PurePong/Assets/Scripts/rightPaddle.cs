@@ -18,9 +18,14 @@ public class rightPaddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        paddleR.rect.y += -scaler * Input.GetAxis("Vertical");
         if (paddleR.rect.y < 10) paddleR.rect.y = 10;
         if (paddleR.rect.y > Screen.height - 40) paddleR.rect.y = Screen.height - 40;
+
+        if(Manager.ballLocation.x > Screen.width / 2)
+        {
+            paddleR.rect.y = Manager.ballLocation.y - 15;
+        }
+
     }
 
     private void OnGUI()
