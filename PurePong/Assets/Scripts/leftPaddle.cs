@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class leftPaddle : MonoBehaviour
 {
-    public float scaler = 2;
+    public float scaler = 1.5f;
     public Prect paddleL;
     private Color LpaddleColor = new Color(1, 1, 0, 1);
 

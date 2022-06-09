@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour
                 }
 
                 //increasesped
-                speed *= 1.05f;
+                speed *= 1;
             }
         }
     }

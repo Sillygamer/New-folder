@@ -23,7 +23,15 @@ public class rightPaddle : MonoBehaviour
 
         if(Manager.ballLocation.x > Screen.width / 2)
         {
-            paddleR.rect.y = Manager.ballLocation.y - 15;
+            if(Manager.ballLocation.y > paddleR.rect.y)
+            {
+                paddleR.rect.y += scaler;
+            }
+            if (Manager.ballLocation.y < paddleR.rect.y)
+            {
+                paddleR.rect.y -= scaler;
+            }
+            // paddleR.rect.y = Manager.ballLocation.y - 15;
         }
 
     }
