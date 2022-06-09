@@ -26,6 +26,7 @@ public class Ball : MonoBehaviour
         ball.rect.x += speed * ballVelocity.normalized.x;
         ball.rect.y += speed * ballVelocity.normalized.y;
         CheckCollisions(ball);
+        CheckOutOfBounds(ball);
         Manager.ballLocation = new Vector2(ball.rect.x, ball.rect.y);
     }
 
@@ -65,7 +66,17 @@ public class Ball : MonoBehaviour
 
     private void BallReset()
     {
-        ballVelocity = new Vector2(Random.Range(1, 3), Random.Range(1, 3));
+        int vely = 0;
+        int velx = 0;
+        int negpos = 2;
+        negpos = Random.Range(0, 1);
+        velx = Random.Range(-3, 3);
+        vely = Random.Range(-3, 3);
+        if (velx == 0 && negpos == 1) velx = Random.Range(1, 3);
+        if (velx == 0 && negpos == 0) velx = Random.Range(1, 3);
+        if (vely == 0 && negpos == 1) vely = Random.Range(-3, -1);
+        if (vely == 0 && negpos == 0) vely = Random.Range(-3, -1);
+        ballVelocity = new Vector2(velx, vely);
         ball.rect.x = Screen.width / 2;
         ball.rect.y = Screen.height / 2;
         speed = Manager.InitBallSpeed;
