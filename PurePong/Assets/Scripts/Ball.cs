@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class Ball : MonoBehaviour
     public float speed;
     public Prect ball;
     private Color ballColor = new Color(0, 1, 0, 1);
+
+    public static string Leftend;
+    public static string Rightend;
+    private Rect leftendtext;
+    private Rect rightendtext;
+    private Color wallColor = new Color(1, 0, .5f, 1);
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +41,9 @@ public class Ball : MonoBehaviour
     {
         foreach(Prect target in Manager.colliderprects)
         {
+
+
+            //collision overlaps
             if (b.rect.Overlaps(target.rect))
             {
                 Debug.Log("Cilided with" + target.name);
@@ -56,10 +66,20 @@ public class Ball : MonoBehaviour
     {
         if(b.rect.x < 0)
         {
+            Manager.Rightscore++;
             BallReset();
+            if (Manager.LeftScore == 11)
+            {
+                SceneManager.LoadScene(2);
+            }
         }
         if(b.rect.x > Screen.width)
         {
+            Manager.LeftScore++;
+            if(Manager.LeftScore == 11)
+            {
+                SceneManager.LoadScene(1);
+            }
             BallReset();
         }
     }

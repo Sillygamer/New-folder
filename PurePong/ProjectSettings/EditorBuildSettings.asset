@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PurePong.unity
+    guid: 7d94766ad323d76468bc6223f7096ddb
+  - enabled: 1
+    path: Assets/Scenes/P1.unity
+    guid: 221b1250caba11e4fb6555af0b5ad0d6
+  - enabled: 1
+    path: Assets/Scenes/P2.unity
+    guid: 91f85ee95f392a44caef70ca129132ab
   m_configObjects: {}

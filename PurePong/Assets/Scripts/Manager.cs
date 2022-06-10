@@ -10,17 +10,24 @@ public class Manager : MonoBehaviour
     public static Prect upperWall;
     public static Prect centerLine;
     private Color wallColor = new Color(1, 0, .5f, 1);
-    private Color centerLineColor = new Color(0, 1, 1, 0.5f);
+    private Color centerLineColor = new Color(0, 1.5f, 1, 0.5f);
 
     //paddleai stuff
     public static Vector2 ballLocation;
 
     //set initial balll speed
-    public static float InitBallSpeed = 0.5f;
+    public static float InitBallSpeed = 5;
 
     //gui.box
     private static Texture2D _staticRectTexture;
     private static GUIStyle _staticRectStyle;
+
+    //scoring
+    public static int LeftScore;
+    public static int Rightscore;
+    private Rect leftscoretext;
+    private Rect rightscoretext;
+
 
     //colision
     public static List<Prect> colliderprects = new List<Prect>();
@@ -36,6 +43,12 @@ public class Manager : MonoBehaviour
         //colisionadd
         colliderprects.Add(upperWall);
         colliderprects.Add(lowerWall);
+
+        LeftScore = 0;
+        Rightscore = 0;
+        leftscoretext = new Rect(20, 20, 20, 20);
+        rightscoretext = new Rect(Screen.width - 30, 20, 20, 20);
+
     }
 
     // Update is called once per frame
@@ -74,5 +87,26 @@ public class Manager : MonoBehaviour
         GUIDrawRect(centerLine.rect, centerLineColor);
         GUIDrawRect(upperWall.rect, wallColor);
         GUIDrawRect(lowerWall.rect, wallColor);
+        GUIDrawRect(leftscoretext, centerLineColor, LeftScore.ToString());
+        GUIDrawRect(rightscoretext, centerLineColor, Rightscore.ToString());
+
+    }
+    public static void GUIDrawRect(Rect position, Color color, string text)
+    {
+        if (_staticRectTexture == null)
+        {
+            _staticRectTexture = new Texture2D(1, 1);
+        }
+
+        if (_staticRectStyle == null)
+        {
+            _staticRectStyle = new GUIStyle();
+            _staticRectStyle.fontSize = 16;
+        }
+
+        _staticRectTexture.SetPixel(0, 0, color);
+        _staticRectTexture.Apply();
+        _staticRectStyle.normal.background = _staticRectTexture;
+        GUI.Box(position, text, _staticRectStyle);
     }
 }

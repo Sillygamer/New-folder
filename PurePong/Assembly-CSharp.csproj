@@ -56,6 +56,7 @@
     <Compile Include="Assets\Scripts\Ball.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Scripts\Prect.cs" />
+    <Compile Include="Assets\Scripts\Rightandleftwall.cs" />
     <Compile Include="Assets\Scripts\Testing.cs" />
     <Compile Include="Assets\Scripts\leftPaddle.cs" />
     <Compile Include="Assets\Scripts\rightPaddle.cs" />
