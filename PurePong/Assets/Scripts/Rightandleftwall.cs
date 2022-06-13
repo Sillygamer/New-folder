@@ -12,15 +12,21 @@ public class Rightandleftwall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lWall = new Prect("Upper Wall", 0, 0, Screen.width, 10, true, "WALL");
-        rWall = new Prect("Lower Wall", 0, Screen.height - 10, Screen.width, 10, true, "WALL");
-        
+        lWall = new Prect("r Wall", 0, 0,10, Screen.height, true, "WALL2");
+        rWall = new Prect("L Wall",Screen.width - 10, 0, 10, Screen.height, true, "WALL2");
 
+        mana2.colliderprects.Add(rWall);
+        mana2.colliderprects.Add(lWall);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    private void OnGUI()
+    {
+        mana2.GUIDrawRect(lWall.rect,wallColor);
+        mana2.GUIDrawRect(rWall.rect, wallColor);
     }
 }

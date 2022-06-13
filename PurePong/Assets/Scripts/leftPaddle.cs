@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class leftPaddle : MonoBehaviour
 {
-    public float scaler = .5f;
+    public float scaler = 10;
     public Prect paddleL;
     private Color LpaddleColor = new Color(1, 1, 0, 1);
     private static Prect paddlep;
@@ -12,6 +12,7 @@ public class leftPaddle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         paddleL = new Prect("Left Paddle", 50, 100, 10, 60, true, "PADDLE");
         Manager.colliderprects.Add(paddleL);
     }
@@ -19,7 +20,7 @@ public class leftPaddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        paddleL.rect.y += -scaler * Input.GetAxis("Vertical");
+        paddleL.rect.y +=- scaler * Input.GetAxis("Vertical");
         if (paddleL.rect.y < 10) paddleL.rect.y = 10;
         if (paddleL.rect.y > Screen.height - 65) paddleL.rect.y = Screen.height - 65;
     }

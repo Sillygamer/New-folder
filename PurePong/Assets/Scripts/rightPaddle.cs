@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class rightPaddle : MonoBehaviour
 {
-    public float scaler = .5f;
+    public float scaler = 10;
     public Prect paddleR;
     private Color RpaddleColor = new Color(1, 1, 0, 1);
     private static Prect paddlep;
@@ -12,7 +12,7 @@ public class rightPaddle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        paddleR = new Prect("Right Paddle",700, 100, 10, 60, true, "PADDLE");
+        paddleR = new Prect("Right Paddle",Screen.width- 50, 100, 10, 60, true, "PADDLE");
         Manager.colliderprects.Add(paddleR);
     }
 

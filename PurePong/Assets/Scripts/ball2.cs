@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Ball : MonoBehaviour
+public class ball2 : MonoBehaviour
 {
     public Vector2 ballVelocity;
     public Vector2 ballLoc;
@@ -23,7 +22,7 @@ public class Ball : MonoBehaviour
         ball = new Prect("Ball", Screen.width / 2, Screen.height / 2, 10, 10, true, "BALL");
         ballVelocity = new Vector2(3, 3);
         ballLoc = new Vector2(ball.rect.x, ball.rect.y);
-        speed = Manager.InitBallSpeed;
+        speed = mana2.InitBallSpeed;
 
     }
 
@@ -33,13 +32,13 @@ public class Ball : MonoBehaviour
         ball.rect.x += speed * ballVelocity.normalized.x;
         ball.rect.y += speed * ballVelocity.normalized.y;
         CheckCollisions(ball);
-        CheckOutOfBounds(ball);
-        Manager.ballLocation = new Vector2(ball.rect.x, ball.rect.y);
+
+        mana2.ballLocation = new Vector2(ball.rect.x, ball.rect.y);
     }
 
     private void CheckCollisions(Prect b)
     {
-        foreach(Prect target in Manager.colliderprects)
+        foreach (Prect target in mana2.colliderprects)
         {
 
 
@@ -47,11 +46,11 @@ public class Ball : MonoBehaviour
             if (b.rect.Overlaps(target.rect))
             {
                 Debug.Log("Cilided with" + target.name);
-                if(target.tag == "WALL")
+                if (target.tag == "WALL")
                 {
                     ballVelocity.y = -ballVelocity.y;
                 }
-                if(target.tag == "PADDLE")
+                if (target.tag == "PADDLE")
                 {
                     ballVelocity.x = -ballVelocity.x;
                 }
@@ -65,27 +64,7 @@ public class Ball : MonoBehaviour
         }
     }
 
-    private void CheckOutOfBounds(Prect b)
-    {
-        if(b.rect.x < 0)
-        {
-            Manager.Rightscore++;
-            BallReset();
-            if (Manager.Rightscore == 11)
-            {
-                SceneManager.LoadScene(3);
-            }
-        }
-        if(b.rect.x > Screen.width)
-        {
-            Manager.LeftScore++;
-            if(Manager.LeftScore == 11)
-            {
-                SceneManager.LoadScene(2);
-            }
-            BallReset();
-        }
-    }
+
 
     private void BallReset()
     {
@@ -102,12 +81,12 @@ public class Ball : MonoBehaviour
         ballVelocity = new Vector2(velx, vely);
         ball.rect.x = Screen.width / 2;
         ball.rect.y = Screen.height / 2;
-        speed = Manager.InitBallSpeed;
+        speed = mana2.InitBallSpeed;
     }
 
     private void OnGUI()
     {
-        Manager.GUIDrawRect(ball.rect, ballColor);
+        mana2.GUIDrawRect(ball.rect, ballColor);
     }
 
 }
